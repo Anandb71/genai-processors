@@ -58,6 +58,12 @@ class TopicGenerator(processor.Processor):
         generate_content_config={
             'response_mime_type': 'application/json',
             'response_schema': list[interfaces.Topic],
+            'thinking_config': (
+                types.ThinkingConfig(thinking_level='medium')
+                if self._config.topic_generator_model_name
+                == 'gemini-3.5-flash-lite'
+                else None
+            ),
         },
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
@@ -95,7 +101,8 @@ Topics
   list[Topic]
 
 Your JSON:
-""")
+"""
+    )
 
     self._pipeline = p_preamble + p_suffix + self._p_genai_model
 

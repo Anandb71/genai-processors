@@ -53,6 +53,10 @@ class TopicResearcher(processor.PartProcessor):
         model_name=self._config.topic_researcher_model_name,
         generate_content_config=types.GenerateContentConfig(
             tools=self._config.enabled_research_tools,
+            thinking_config=types.ThinkingConfig(thinking_level='medium')
+            if self._config.topic_researcher_model_name
+            == 'gemini-3.5-flash-lite'
+            else None,
         ),
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(

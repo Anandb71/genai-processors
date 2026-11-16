@@ -85,6 +85,11 @@ The Research Agent follows a structured pipeline:
 
 ## 🛠️ Configuration
 
+The research stages default to `gemini-3.5-flash-lite` with `medium` thinking,
+as recommended for multi-step reasoning in Google's
+[migration guide](https://aistudio.google.com/docs/whats-new-gemini-3.6#migrate-to-gemini-3-5-flash-lite).
+Google will [reroute `gemini-2.5-flash` on December 1, 2026](https://ai.google.dev/gemini-api/docs/deprecations#gemini-2.5-flash-models).
+
 The behavior of the `ResearchAgent` can be customized through the
 `interfaces.Config` object, allowing you to specify:
 

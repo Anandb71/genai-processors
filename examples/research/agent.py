@@ -99,6 +99,12 @@ class ResearchAgent(processor.Processor):
     p_genai_model = genai_model.GenaiModel(
         api_key=api_key,
         model_name=self._config.research_synthesizer_model_name,
+        generate_content_config=types.GenerateContentConfig(
+            thinking_config=types.ThinkingConfig(thinking_level='medium')
+            if self._config.research_synthesizer_model_name
+            == 'gemini-3.5-flash-lite'
+            else None,
+        ),
         http_options=types.HttpOptions(
             retry_options=types.HttpRetryOptions(
                 attempts=100,
@@ -111,9 +117,7 @@ class ResearchAgent(processor.Processor):
             'Research text: ',
         ]
     )
-    p_suffix = preamble.Suffix(
-        content='Your synthesized research: '
-    )
+    p_suffix = preamble.Suffix(content='Your synthesized research: ')
     self._pipeline = (
         p_topic_generator
         + p_topic_researcher

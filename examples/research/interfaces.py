@@ -59,9 +59,9 @@ class Config:
       the Google Search tool is enabled.
   """
 
-  topic_generator_model_name: str = 'gemini-2.5-flash'
-  topic_researcher_model_name: str = 'gemini-2.5-flash'
-  research_synthesizer_model_name: str = 'gemini-2.5-flash'
+  topic_generator_model_name: str = 'gemini-3.5-flash-lite'
+  topic_researcher_model_name: str = 'gemini-3.5-flash-lite'
+  research_synthesizer_model_name: str = 'gemini-3.5-flash-lite'
   num_topics: int = 5
   excluded_topics: list[str] | None = None
   # Use default factory instead
